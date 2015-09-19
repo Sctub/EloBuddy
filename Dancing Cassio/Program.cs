@@ -33,13 +33,13 @@ namespace Dancing_Cassio
             TargetSelector.Init();
             Bootstrap.Init(null);
 
-            Q = new Spell.Skillshot(SpellSlot.Q, 750, SkillShotType.Circular, (int)750, Int32.0,(int)40f);
+            Q = new Spell.Skillshot(SpellSlot.Q, 750, SkillShotType.Circular, 750, 0, 40);
             W = new Spell.Skillshot(SpellSlot.W, 850, SkillShotType.Circular, (int)0.5f, Int32.MaxValue, (int)90f);
             E = new Spell.Targeted(SpellSlot.E, 700);
             R = new Spell.Skillshot(SpellSlot.R, 825, SkillShotType.Cone, (int)0.6f, Int32.MaxValue, (int)(80 * Math.PI / 180));
 
-            CassioMenu = MainMenu.AddMenu("Cassio Enemy", "cassio.enemy");
-            CassioMenu.AddGroupLabel("Casio Enemy");
+            CassioMenu = MainMenu.AddMenu("Dancing Cassio", "cassio.enemy");
+            CassioMenu.AddGroupLabel("Dancing Cassio");
             CassioMenu.AddSeparator();
             CassioMenu.AddLabel("Improved By Sctub // whoami");
 
