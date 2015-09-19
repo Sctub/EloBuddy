@@ -33,7 +33,7 @@ namespace Dancing_Cassio
             TargetSelector.Init();
             Bootstrap.Init(null);
 
-            Q = new Spell.Skillshot(SpellSlot.Q, 850, SkillShotType.Circular, (int)0.75f, Int32.MaxValue, (int)40f);
+            Q = new Spell.Skillshot(SpellSlot.Q, 750, SkillShotType.Circular, (int)750, Int32.0,(int)40f);
             W = new Spell.Skillshot(SpellSlot.W, 850, SkillShotType.Circular, (int)0.5f, Int32.MaxValue, (int)90f);
             E = new Spell.Targeted(SpellSlot.E, 700);
             R = new Spell.Skillshot(SpellSlot.R, 825, SkillShotType.Cone, (int)0.6f, Int32.MaxValue, (int)(80 * Math.PI / 180));
