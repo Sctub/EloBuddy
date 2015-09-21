@@ -34,9 +34,9 @@ namespace Dancing_Cassio
             Bootstrap.Init(null);
 
             Q = new Spell.Skillshot(SpellSlot.Q, 750, SkillShotType.Circular, 750, 0, 40);
-            W = new Spell.Skillshot(SpellSlot.W, 850, SkillShotType.Circular, (int)0.5f, Int32.MaxValue, (int)90f);
+            W = new Spell.Skillshot(SpellSlot.W, 850, SkillShotType.Circular, 500, 0, 90);
             E = new Spell.Targeted(SpellSlot.E, 700);
-            R = new Spell.Skillshot(SpellSlot.R, 825, SkillShotType.Cone, (int)0.6f, Int32.MaxValue, (int)(80 * Math.PI / 180));
+            R = new Spell.Skillshot(SpellSlot.R, 825, SkillShotType.Cone, 600, 0, (int)(80 * Math.PI / 180));
 
             CassioMenu = MainMenu.AddMenu("Dancing Cassio", "cassio.enemy");
             CassioMenu.AddGroupLabel("Dancing Cassio");
@@ -106,7 +106,7 @@ namespace Dancing_Cassio
             }
             if (useE && E.IsReady())
             {
-                foreach (var target in HeroManager.Enemies.Where(o => o.IsValidTarget(E.Range) && !o.IsDead && !o.IsZombie
+                foreach (var target in HeroManager.Enemies.Where(o => o.IsValidTarget(E.Range) && !o.IsDead && !o.IsZombie))
                     && o.HasBuffOfType(BuffType.Poison)))
                 {
                     E.Cast(target);
@@ -114,7 +114,7 @@ namespace Dancing_Cassio
             }
             if (useR && R.IsReady())
             {
-                foreach (var target in HeroManager.Enemies.Where(o => o.IsValidTarget(R.Range) && !o.IsDead && !o.IsZombie
+                foreach (var target in HeroManager.Enemies.Where(o => o.IsValidTarget(R.Range) && !o.IsDead && !o.IsZombie))
                     && RDamage(o) > o.Health))
                 {
                     R.Cast(target.Position);
