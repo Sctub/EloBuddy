@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using EloBuddy;
 using EloBuddy.SDK;
 using EloBuddy.SDK.Enumerations;
 using EloBuddy.SDK.Events;
 using EloBuddy.SDK.Menu;
 using EloBuddy.SDK.Menu.Values;
-using Microsoft.Win32;
 
 
 namespace Dancing_Cassio
@@ -86,7 +82,7 @@ namespace Dancing_Cassio
 
             if (useQ && Q.IsReady())
             {
-                foreach (var target in HeroManager.Enemies.Where(o => o.IsValidTarget(Q.Range) && !o.IsDead))
+                foreach (var target in HeroManager.Enemies.Where(o => o.IsValidTarget(Q.Range) && !o.IsDead ))
                 {
                     if (Q.GetPrediction(target).HitChance >= HitChance.High)
                     {
@@ -96,7 +92,7 @@ namespace Dancing_Cassio
             }
             if (useW && W.IsReady())
             {
-                foreach (var target in HeroManager.Enemies.Where(o => o.IsValidTarget(W.Range) && !o.IsDead))
+                foreach (var target in HeroManager.Enemies.Where(o => o.IsValidTarget(W.Range) && !o.IsDead ))
                 {
                     if (W.GetPrediction(target).HitChance >= HitChance.High)
                     {
@@ -106,7 +102,7 @@ namespace Dancing_Cassio
             }
             if (useE && E.IsReady())
             {
-                foreach (var target in HeroManager.Enemies.Where(o => o.IsValidTarget(E.Range) && !o.IsDead))
+                foreach (var target in HeroManager.Enemies.Where(o => o.IsValidTarget(E.Range) && !o.IsDead 
                     && o.HasBuffOfType(BuffType.Poison)))
                 {
                     E.Cast(target);
@@ -114,7 +110,7 @@ namespace Dancing_Cassio
             }
             if (useR && R.IsReady())
             {
-                foreach (var target in HeroManager.Enemies.Where(o => o.IsValidTarget(R.Range) && !o.IsDead))
+                foreach (var target in HeroManager.Enemies.Where(o => o.IsValidTarget(R.Range) && !o.IsDead 
                     && RDamage(o) > o.Health))
                 {
                     R.Cast(target.Position);
@@ -131,7 +127,7 @@ namespace Dancing_Cassio
 
             if (useQ && Q.IsReady())
             {
-                foreach (var target in HeroManager.Enemies.Where(o => o.IsValidTarget(Q.Range) && !o.IsDead &&))
+                foreach (var target in HeroManager.Enemies.Where(o => o.IsValidTarget(Q.Range) && !o.IsDead ))
                 {
                     if (Q.GetPrediction(target).HitChance >= HitChance.High)
                     {
@@ -141,7 +137,7 @@ namespace Dancing_Cassio
             }
             if (useE && E.IsReady())
             {
-                foreach (var target in HeroManager.Enemies.Where(o => o.IsValidTarget(E.Range) && !o.IsDead &&))
+                foreach (var target in HeroManager.Enemies.Where(o => o.IsValidTarget(E.Range) && !o.IsDead 
                     && o.HasBuffOfType(BuffType.Poison)))
                 {
                     E.Cast(target);
