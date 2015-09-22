@@ -19,7 +19,7 @@ namespace Dancing_Cassio
         public static Menu CassioMenu, ComboMenu, HarassMenu, LaneMenu;
 
 
-        static void Main(string[] args)
+        static void Main()
         {
             Loading.OnLoadingComplete += Loading_OnLoadingComplete;
         }
