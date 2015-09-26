@@ -36,7 +36,7 @@ namespace Dancing_Cassio
             CassioMenu = MainMenu.AddMenu("Dancing Cassio", "cassio.enemy");
             CassioMenu.AddGroupLabel("Dancing Cassio");
             CassioMenu.AddSeparator();
-            CassioMenu.AddLabel("Improved By Sctub  wasdasdasdasdhoami");
+            CassioMenu.AddLabel("Improved By Sctub // whoami");
 
             ComboMenu = CassioMenu.AddSubMenu("Combo Settings", "Combo");
             ComboMenu.AddGroupLabel("Combo Settings");
