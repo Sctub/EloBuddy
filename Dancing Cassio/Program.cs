@@ -44,7 +44,7 @@ namespace Dancing_Cassio
             ComboMenu.Add("combo.w", new CheckBox("Use W"));
             ComboMenu.Add("combo.e", new CheckBox("Use E"));
             ComboMenu.Add("combo.r", new CheckBox("Use R"));
-            ComboMenu.Add("combo.ignore", new CheckBox("Use R"));
+
             HarassMenu = CassioMenu.AddSubMenu("Harass Settings", "Harass");
             HarassMenu.AddGroupLabel("Harass Settings");
             HarassMenu.AddSeparator();
@@ -99,7 +99,6 @@ namespace Dancing_Cassio
             var useW = ComboMenu["combo.w"].Cast<CheckBox>().CurrentValue;
             var useE = ComboMenu["combo.e"].Cast<CheckBox>().CurrentValue;
             var useR = ComboMenu["combo.r"].Cast<CheckBox>().CurrentValue;
-            var ignore = ComboMenu["combo.ignore"].Cast<CheckBox>().CurrentValue;
                 if (useQ && Q.IsReady())
             {
                 foreach (
