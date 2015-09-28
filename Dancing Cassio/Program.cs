@@ -59,11 +59,12 @@ namespace Dancing_Cassio
             LaneClearMenu.Add("laneclear.e", new CheckBox("Use E"));
 
             JungleClearMenu = CassioMenu.AddSubMenu("Jungleclear Settings", "Jungleclear");
-            JungleClearMenu.AddGroupLabel("Jungleclear Settings");
-            JungleClearMenu.AddSeparator();
-            JungleClearMenu.Add("jungleclear.q", new CheckBox("Use Q"));
-            JungleClearMenu.Add("jungleclear.w", new CheckBox("Use W"));
-            JungleClearMenu.Add("jungleclear.e", new CheckBox("Use E"));
+            //JungleClearMenu.AddGroupLabel("Jungleclear Settings");
+            //JungleClearMenu.AddSeparator();
+            //JungleClearMenu.Add("jungleclear.q", new CheckBox("Use Q"));
+            //JungleClearMenu.Add("jungleclear.w", new CheckBox("Use W"));
+            //JungleClearMenu.Add("jungleclear.e", new CheckBox("Use E"));
+            JungleClearMenu.Add("jungleclear.info", new CheckBox("Bikk soon"));
 
             Game.OnTick += Game_OnTick;
         }
