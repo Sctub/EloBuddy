@@ -6,7 +6,6 @@ using EloBuddy.SDK.Enumerations;
 using EloBuddy.SDK.Events;
 using EloBuddy.SDK.Menu;
 using EloBuddy.SDK.Menu.Values;
-using SharpDX;
 
 namespace Dancing_Cassio
 {
@@ -16,7 +15,7 @@ namespace Dancing_Cassio
         public static Spell.Skillshot W;
         public static Spell.Targeted E;
         public static Spell.Skillshot R;
-        public static Menu CassioMenu, ComboMenu, HarassMenu, LaneClearMenu;
+        public static Menu CassioMenu, ComboMenu, HarassMenu, LaneClearMenu, JungleClearMenu;
 
         private static void Main()
         {
@@ -45,7 +44,7 @@ namespace Dancing_Cassio
             ComboMenu.Add("combo.w", new CheckBox("Use W"));
             ComboMenu.Add("combo.e", new CheckBox("Use E"));
             ComboMenu.Add("combo.r", new CheckBox("Use R"));
-
+            ComboMenu.Add("combo.ignore", new CheckBox("Use R"));
             HarassMenu = CassioMenu.AddSubMenu("Harass Settings", "Harass");
             HarassMenu.AddGroupLabel("Harass Settings");
             HarassMenu.AddSeparator();
@@ -58,6 +57,13 @@ namespace Dancing_Cassio
             LaneClearMenu.Add("laneclear.q", new CheckBox("Use Q"));
             LaneClearMenu.Add("laneclear.w", new CheckBox("Use W"));
             LaneClearMenu.Add("laneclear.e", new CheckBox("Use E"));
+
+            JungleClearMenu = CassioMenu.AddSubMenu("Jungleclear Settings", "Jungleclear");
+            JungleClearMenu.AddGroupLabel("Jungleclear Settings");
+            JungleClearMenu.AddSeparator();
+            JungleClearMenu.Add("jungleclear.q", new CheckBox("Use Q"));
+            JungleClearMenu.Add("jungleclear.w", new CheckBox("Use W"));
+            JungleClearMenu.Add("jungleclear.e", new CheckBox("Use E"));
 
             Game.OnTick += Game_OnTick;
         }
@@ -76,9 +82,13 @@ namespace Dancing_Cassio
 
             if (Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.LaneClear))
             {
-                laneClear();
+                LaneClear();
             }
 
+            //if (Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.JungleClear))
+            //{
+                //JungleClear();
+            //}
         }
 
 
@@ -88,7 +98,8 @@ namespace Dancing_Cassio
             var useW = ComboMenu["combo.w"].Cast<CheckBox>().CurrentValue;
             var useE = ComboMenu["combo.e"].Cast<CheckBox>().CurrentValue;
             var useR = ComboMenu["combo.r"].Cast<CheckBox>().CurrentValue;
-            if (useQ && Q.IsReady())
+            var ignore = ComboMenu["combo.ignore"].Cast<CheckBox>().CurrentValue;
+                if (useQ && Q.IsReady())
             {
                 foreach (
                     var target in HeroManager.Enemies.Where(o => o.IsValidTarget(Q.Range) && !o.IsDead && !o.IsZombie))
@@ -116,7 +127,9 @@ namespace Dancing_Cassio
             {
                 foreach (
                     var target in HeroManager.Enemies.Where(o => o.IsValidTarget(E.Range) && !o.IsDead && !o.IsZombie
-                                                                 && o.HasBuffOfType(BuffType.Poison)))
+                                                                 && o.HasBuffOfType(BuffType.Poison) || DamageLibrary.GetSpellDamage(ObjectManager.Player, o, SpellSlot.E) >= o.Health))
+
+
                 {
                     E.Cast(target);
                 }
@@ -162,7 +175,7 @@ namespace Dancing_Cassio
             }
         }
 
-        private static void laneClear()
+        private static void LaneClear()
         {
             var useQ = LaneClearMenu["laneclear.q"].Cast<CheckBox>().CurrentValue;
             var useW = LaneClearMenu["laneclear.w"].Cast<CheckBox>().CurrentValue;
@@ -208,7 +221,42 @@ namespace Dancing_Cassio
                 }
             }
         }
-    }
 
-}
+        // private static void JungleClear() bikk soon
+        //{
+            //var useQ = LaneClearMenu["jungleclear.q"].Cast<CheckBox>().CurrentValue;
+            //var useW = LaneClearMenu["jungleclear.w"].Cast<CheckBox>().CurrentValue;
+            //var useE = LaneClearMenu["jungleclear.e"].Cast<CheckBox>().CurrentValue;
+            //var mobs = EntityManager.GetJungleMonsters(Player.Instance.ServerPosition.To2D(), Q.Range)
+                        //.OrderByDescending(o => o.Health)
+                        //.FirstOrDefault();
+            //if (useQ && Q.IsReady())
+            //{
+               // if (mobs != null)
+                  //  {
+                    //    Q.Cast(mobs);
+                    //}
+                
+
+            //}
+            //if (useW && W.IsReady())
+            //{
+              //      if (mobs != null)
+                //    {
+                  //      W.Cast(mobs);
+                    //}
+                
+
+         //   }
+           // if (useE && E.IsReady())
+            //{
+              //  if (mobs != null && mobs.HasBuffOfType(BuffType.Poison))
+               // {
+                 //   E.Cast(mobs);
+                //}
+            }
+        }
+    //}
+
+//}
 
